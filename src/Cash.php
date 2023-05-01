@@ -18,18 +18,18 @@ class Cash
         self::$db = new DB();
     }
 
-    public function allSelling(): int|string|null
+    public function allSelling(): int
     {
-        return self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH]) ?? 0;
+        return (int)self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH]);
     }
 
-    public function dailySelling(): int|string|null
+    public function dailySelling(): int
     {
-        return self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH, 'created_at[<>]' => [self::$START_DAY, self::$END_DAY]]) ?? 0;
+        return (int)self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH, 'created_at[<>]' => [self::$START_DAY, self::$END_DAY]]);
     }
 
-    public function dailyMixSelling(): int|string|null
+    public function dailyMixSelling(): int
     {
-        return self::$db->database->sum('mix_selling', 'on_cash', ['created_at[<>]' => [self::$START_DAY, self::$END_DAY]]) ?? 0;
+        return (int)self::$db->database->sum('mix_selling', 'on_cash', ['created_at[<>]' => [self::$START_DAY, self::$END_DAY]]);
     }
 }
