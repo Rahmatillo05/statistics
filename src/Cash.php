@@ -23,8 +23,8 @@ class Cash
         return self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH]) ?? 0;
     }
 
-    public function dailySelling()
+    public function dailySelling(): int|string|null
     {
-
+        return self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH, 'created_at[<>]' => [self::$START_DAY, self::$END_DAY]]) ?? 0;
     }
 }
