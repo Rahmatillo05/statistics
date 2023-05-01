@@ -3,7 +3,6 @@
 namespace CodeCrafter\ControllerStatistics;
 class Cash
 {
-
     public static int $START_DAY;
     public static int $END_DAY;
 
@@ -57,6 +56,18 @@ class Cash
         return (int)self::$db
             ->database
             ->sum('payment_history_list',
+                'pay_amount',
+                [
+                    'created_at[<>]' => [self::$START_DAY, self::$END_DAY],
+                    'type_pay' => self::CASH
+                ]);
+    }
+
+    public function dailyPaidDebt(): int
+    {
+        return (int)self::$db
+            ->database
+            ->sum('debt_history',
                 'pay_amount',
                 [
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY],
