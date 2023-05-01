@@ -20,8 +20,7 @@ class Cash
 
     public function allSelling(): int|string|null
     {
-        $db = new DB();
-        return $db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH]);
+        return self::$db->database->sum('selling', 'sell_price', ['type_pay' => self::CASH]) ?? 0;
     }
 
     public function dailySelling()
