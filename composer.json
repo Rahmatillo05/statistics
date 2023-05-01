@@ -1,0 +1,19 @@
+{
+    "name": "code_crafter/controller-statistics",
+    "description": ".....",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CodeCrafter\\ControllerStatistics\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rahmatullo"
+        }
+    ],
+    "require": {
+        "catfan/medoo": "^2.1",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
