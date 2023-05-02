@@ -10,10 +10,12 @@ class Cash
 
     const CASH = 10;
 
-    public function __construct()
+    public function __construct($START_DAY = null, $END_DAY = null)
     {
-        self::$START_DAY = strtotime('today');
-        self::$END_DAY = self::$START_DAY + 86395;
+        if (is_null($START_DAY) && is_null($END_DAY)) {
+            self::$START_DAY = strtotime('today');
+            self::$END_DAY = self::$START_DAY + 86395;
+        }
         self::$db = new DB();
     }
 
