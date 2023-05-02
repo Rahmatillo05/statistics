@@ -1,6 +1,6 @@
 <?php
 
-use CodeCrafter\ControllerStatistics\Cash;
+use app\core\Cash;
 
 $cash = new Cash();
 

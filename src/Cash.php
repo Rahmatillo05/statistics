@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeCrafter\ControllerStatistics;
+namespace app\core;
 class Cash
 {
     public static int $START_DAY;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeCrafter\ControllerStatistics;
+namespace app\core;
 
 use Medoo\Medoo;
 
