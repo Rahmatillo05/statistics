@@ -4,7 +4,6 @@ namespace app\core;
 class Cash extends Money
 {
 
-
     public function allSelling(): int
     {
         return (int)self::$db

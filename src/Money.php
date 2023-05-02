@@ -9,7 +9,12 @@ class Money
 
     public static DB $db;
 
-    const CASH = 10;
+    const CASH = 10; # naqd pul
+    const PLASTIC = 0; # plastikka savdo
+
+    const DEBT = 5; # qarzga
+
+    const MIX_TYPE = 15; # Aralash holatda
 
     public function __construct($START_DAY = null, $END_DAY = null)
     {
