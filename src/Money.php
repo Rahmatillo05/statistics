@@ -24,4 +24,14 @@ class Money
         }
         self::$db = new DB();
     }
+
+    public function setStartDate(int $start_date): void
+    {
+        self::$START_DAY = $start_date;
+    }
+
+    public function setEndDate(int $end_date): void
+    {
+        self::$END_DAY = $end_date;
+    }
 }
