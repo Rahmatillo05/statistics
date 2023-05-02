@@ -6,5 +6,6 @@ $cash = new Cash();
 
 echo $cash->dailySelling()."<br>";
 echo $cash->dailyMixSelling()."<br>";
-echo $cash->dailyPayment()."<br>";
+echo $cash->dailyInstantPayment()."<br>";
 echo $cash->dailyPaidDebt()."<br>";
+echo $cash->dailyTotalCash()."<br>";

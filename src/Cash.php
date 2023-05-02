@@ -51,7 +51,7 @@ class Cash
                 ]);
     }
 
-    public function dailyPayment(): int
+    public function dailyInstantPayment(): int
     {
         return (int)self::$db
             ->database
@@ -73,5 +73,10 @@ class Cash
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY],
                     'type_pay' => self::CASH
                 ]);
+    }
+
+    public function dailyTotalCash(): int
+    {
+        return $this->dailyInstantPayment() + $this->dailySelling() + $this->dailyMixSelling() + $this->dailyPaidDebt();
     }
 }
