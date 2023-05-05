@@ -16,22 +16,15 @@ class Money
 
     const MIX_TYPE = 15; # Aralash holatda
 
-    public function __construct($START_DAY = null, $END_DAY = null)
+    public function __construct(int $START_DAY = null, int $END_DAY = null)
     {
         if (is_null($START_DAY) && is_null($END_DAY)) {
             self::$START_DAY = strtotime('today');
             self::$END_DAY = self::$START_DAY + 86395;
         }
+        self::$START_DAY = $START_DAY;
+        self::$END_DAY = $END_DAY;
         self::$db = new DB();
     }
 
-    public function setStartDate(int $start_date): void
-    {
-        self::$START_DAY = $start_date;
-    }
-
-    public function setEndDate(int $end_date): void
-    {
-        self::$END_DAY = $end_date;
-    }
 }

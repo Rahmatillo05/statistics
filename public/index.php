@@ -12,5 +12,6 @@ $dotenv->safeLoad();
 $app = new Application(dirname(__DIR__));
 
 $app->router->get('/', [SiteController::class, 'index']);
+$app->router->get('/sorting', [SiteController::class, 'sorting']);
 
 echo $app->run();
