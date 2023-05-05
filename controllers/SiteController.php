@@ -25,7 +25,7 @@ class SiteController extends Controller
         $sorting_dates = Application::$app->request->get('Sorting');
         $start = strtotime($sorting_dates['start']);
         $end = strtotime($sorting_dates['end']);
-         $money = new Money($start, $end);
+        new Money($start, $end);
     }
     
 }
