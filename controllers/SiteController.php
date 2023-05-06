@@ -15,11 +15,11 @@ class SiteController extends Controller
 
     public function sorting()
     {
-        $this->setInternal();
+        $this->setInterval();
 
     }
 
-    public function setInternal(): void
+    public function setInterval(): void
     {
         $sorting_dates = Application::$app->request->get('Sorting');
         if ($sorting_dates['start'] && !$sorting_dates['end']) {
