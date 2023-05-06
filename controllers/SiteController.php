@@ -33,7 +33,6 @@ class SiteController extends Controller
             $start = strtotime($sorting_dates['start']);
             $end = strtotime($sorting_dates['end']);
         } else {
-
             $start = strtotime("today");
             $end = $start + 86399;
         }
