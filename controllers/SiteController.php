@@ -17,7 +17,8 @@ class SiteController extends Controller
     {
         $this->setInternal();
         echo "<pre>";
-        echo date("d-m-Y H-i-s", Money::$START_DAY);
+        echo date("d-m-Y H-i-s", Money::$START_DAY) ."<br>";
+        echo date("d-m-Y H-i-s", Money::$END_DAY);
     }
 
     public function setInternal(): void

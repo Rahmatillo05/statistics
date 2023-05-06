@@ -18,7 +18,7 @@ class Money
 
     public function __construct(int $START_DAY = null, int $END_DAY = null)
     {
-        if (is_null($START_DAY) && is_null($END_DAY)) {
+        if (is_null($START_DAY) || is_null($END_DAY)) {
             self::$START_DAY = strtotime('today');
             self::$END_DAY = self::$START_DAY + 86395;
         }
