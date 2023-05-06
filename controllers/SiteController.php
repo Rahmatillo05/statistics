@@ -13,15 +13,16 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function sorting()
-    {
-        $this->setInterval();
-
-    }
-
-    public function setInterval(): void
+    public function sorting(): bool|array|string
     {
         $sorting_dates = Application::$app->request->get('Sorting');
+        $this->setInterval($sorting_dates);
+
+        return $this->render('index', compact('sorting_dates'));
+    }
+
+    public function setInterval(array $sorting_dates): void
+    {
         if ($sorting_dates['start'] && !$sorting_dates['end']) {
             $start = strtotime($sorting_dates['start']);
             $end = strtotime("today");

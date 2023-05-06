@@ -1,3 +1,11 @@
+<?php
+
+/**
+ * @var array $sorting_dates
+ */
+
+?>
+
 <div class="row mt-5">
     <div class="col-12">
         <div class="card">
@@ -8,11 +16,12 @@
                         <h4>Sana bo'yicha ko'rish:</h4>
                         <label>
                             Boshlanish sanasi
-                            <input type="date" name="Sorting[start]" class="form-control">
+                            <input type="date" name="Sorting[start]" value="<?= $sorting_dates['start'] ?? '' ?>"
+                                   class="form-control">
                         </label>
                         <label>
                             Tugash sanasi
-                            <input type="date" class="form-control" name="Sorting[end]">
+                            <input type="date" class="form-control" name="Sorting[end]" value="<?= $sorting_dates['end'] ?? '' ?>">
                         </label>
                         <button type="submit" class="btn btn-primary">Ko'rish</button>
                     </form>
