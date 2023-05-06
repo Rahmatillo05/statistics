@@ -21,10 +21,28 @@ class Selling
     public function __construct()
     {
         self::$db = new DB();
+        self::$START_DAY = strtotime('today');
+        self::$END_DAY = static::$START_DAY + 86399;
     }
 
-    public function daily(): ?array
+    public function daily(array $columns = []): ?array
     {
-        return self::$db->database->select('selling', "*", ['created_at[<>]' => [strtotime('today'), strtotime('today') + 86399]]);
+        if (!empty($columns) && count($columns) != 1) {
+            return self::$db->database->select('selling', [
+                "[>]category" => ["category_id" => "id"]
+            ], $columns
+            );
+        }
+
+        return self::$db->database->select('selling', "*",
+            [
+                'created_at[<>]' => [self::$START_DAY, self::$END_DAY]
+            ]
+        );
+    }
+
+    public function dailySellingCount(): int
+    {
+        return count($this->daily());
     }
 }
