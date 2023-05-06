@@ -21,7 +21,7 @@
                         </label>
                         <label>
                             Tugash sanasi
-                            <input type="date" class="form-control" name="Sorting[end]" value="<?= $sorting_dates['end'] ?? '' ?>">
+                            <input type="date" class="form-control" name="Sorting[end]" dataformatas="dd/mm/yyyy" value="<?= $sorting_dates['end'] ?? '' ?>">
                         </label>
                         <button type="submit" class="btn btn-primary">Ko'rish</button>
                     </form>
