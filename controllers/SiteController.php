@@ -25,10 +25,11 @@ class SiteController extends Controller
     {
         $sorting_dates = Application::$app->request->get('Sorting');
         $start = strtotime("today");
-        $end = $start + 86399;
         if ($sorting_dates['start']) {
             $start = $sorting_dates['start'];
-        } elseif ($sorting_dates['end']) {
+        }
+        $end = $start + 86399;
+        if ($sorting_dates['end']) {
             $end = $sorting_dates['end'];
         }
         new Money($start, $end);
