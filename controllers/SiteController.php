@@ -17,16 +17,21 @@ class SiteController extends Controller
     {
         $this->setInternal();
         echo "<pre>";
-        echo date("d-m-Y H-i-s", Money::$START_DAY) ."<br>";
+        echo date("d-m-Y H-i-s", Money::$START_DAY) . "<br>";
         echo date("d-m-Y H-i-s", Money::$END_DAY);
     }
 
     public function setInternal(): void
     {
         $sorting_dates = Application::$app->request->get('Sorting');
-        $start = strtotime($sorting_dates['start']);
-        $end = strtotime($sorting_dates['end']);
+        $start = strtotime("today");
+        $end = $start + 86399;
+        if ($sorting_dates['start']) {
+            $start = $sorting_dates['start'];
+        } elseif ($sorting_dates['end']) {
+            $end = $sorting_dates['end'];
+        }
         new Money($start, $end);
     }
-    
+
 }
