@@ -4,7 +4,10 @@
  * @var array $sorting_dates
  */
 
+use app\core\selling\Selling;
 use app\core\View;
+
+$selling = new Selling();
 
 ?>
 
@@ -43,7 +46,7 @@ use app\core\View;
                 <span class="text-mute">Odatiy holatda bugungi kundagi ma'lumotlar aks etadi</span>
             </div>
             <div class="card-body">
-                <?= View::staticRender('selling') ?>
+                <?= View::staticRender('selling', compact('selling')) ?>
             </div>
         </div>
     </div>
