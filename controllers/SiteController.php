@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 use app\core\Application;
+use app\core\Cash;
 use app\core\Controller;
 use app\core\Money;
+use app\core\selling\Selling;
 
 class SiteController extends Controller
 {
@@ -17,7 +19,6 @@ class SiteController extends Controller
     {
         $sorting_dates = Application::$app->request->get('Sorting');
         $this->setInterval($sorting_dates);
-
         return $this->render('index', compact('sorting_dates'));
     }
 

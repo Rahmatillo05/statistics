@@ -89,4 +89,5 @@ class Selling
     {
         return number_format($sell_price, 0, '.', ' '). ' So\'m';
     }
+
 }

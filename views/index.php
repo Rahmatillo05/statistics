@@ -46,7 +46,14 @@ $selling = new Selling();
                 <span class="text-mute">Odatiy holatda bugungi kundagi ma'lumotlar aks etadi</span>
             </div>
             <div class="card-body">
-                <?= View::staticRender('selling', compact('selling')) ?>
+                <div class="mb-md-3">
+                    <h3 class="card-title">Kataloglar bo'yicha</h3>
+                    <?= View::staticRender('by_category') ?>
+                </div>
+                <div class="">
+                    <h3 class="card-title">Barcha sotish qaydlari</h3>
+                    <?= View::staticRender('selling', compact('selling')) ?>
+                </div>
             </div>
         </div>
     </div>

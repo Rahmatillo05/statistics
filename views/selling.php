@@ -46,3 +46,4 @@ $sales = $selling->dailySales();
         </tbody>
     </table>
 </div>
+
