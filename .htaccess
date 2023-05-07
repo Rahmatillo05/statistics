@@ -1,7 +1,10 @@
+Options +FollowSymLinks
+IndexIgnore */*
 RewriteEngine On
 
-# Barcha so'rovlar /public katalogiga yo'naltirilsin
-RewriteRule ^$ public/ [L]
+RewriteCond %{REQUEST_URI} !^/(public)
+RewriteRule (.*) /public/$1
 
-# Barcha so'rovlar /public katalogiga yo'naltirilsin, xuddi shunday
-RewriteRule ^(.*)$ public/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /public/index.php
