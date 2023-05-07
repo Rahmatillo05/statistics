@@ -3,7 +3,8 @@
 use app\core\selling\ByCategory;
 
 $caty = new ByCategory();
-$sales = $caty->dailySalesByCategory()
+$sales = $caty->dailySalesByCategory();
+
 ?>
 
 <div class="table-responsive">
@@ -23,9 +24,9 @@ $sales = $caty->dailySalesByCategory()
                 <td><?= $caty::setAmountUnit($sale['amount'], $sale['unit']) ?></td>
                 <td><?= $caty->priceFormatter($sale['price']) ?></td>
                 <td>
-                    <div class="progress" role="progressbar" aria-valuenow="25"
-                         aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 25%"><?= $caty->priceFormatter($sale['price']) ?></div>
+                    <div class="progress" role="progressbar" aria-valuenow="<?= $sale['price'] ?>"
+                         aria-valuemin="0" aria-valuemax="<?= $caty->fetchMax() ?>">
+                        <div class="progress-bar overflow-visible" style="width: <?= $caty->calcPercent($sale['price']) ?>%"><?= $caty->priceFormatter($sale['price']) ?></div>
                     </div>
                 </td>
             </tr>
