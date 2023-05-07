@@ -40,6 +40,21 @@ $selling = new Selling();
                 <?= View::staticRender('table_stat') ?>
             </div>
         </div>
-
+        <div class="card mt-sm-3">
+            <div class="card-header">
+                <h3 class="card-title">Sotish bo'yicha</h3>
+                <span class="text-mute">Odatiy holatda bugungi kundagi ma'lumotlar aks etadi</span>
+            </div>
+            <div class="card-body">
+                <div class="mb-md-3">
+                    <h3 class="card-title">Kataloglar bo'yicha</h3>
+                    <?= View::staticRender('by_category') ?>
+                </div>
+                <div class="">
+                    <h3 class="card-title">Barcha sotish qaydlari</h3>
+                    <?= View::staticRender('selling', compact('selling')) ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
