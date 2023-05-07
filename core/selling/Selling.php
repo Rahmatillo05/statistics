@@ -21,7 +21,7 @@ class Selling
     public function __construct()
     {
         self::$db = new DB();
-        self::$START_DAY = strtotime('today');
+        self::$START_DAY = strtotime('yesterday');
         self::$END_DAY = static::$START_DAY + 86399;
     }
 
