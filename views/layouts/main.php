@@ -29,6 +29,9 @@ use app\core\Application;
         $('#selling-table').DataTable({
             order: [[ 6, 'desc' ]]
         });
+        $('#debt_history').DataTable({
+           order: [[5, 'desc']]
+        });
     });
 </script>
 </body>

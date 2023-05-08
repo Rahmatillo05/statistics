@@ -6,9 +6,11 @@
  * @var Plastic $plastic
  * @var Selling $selling
  * @var ByCategory $caty
+ * @var DebtHistory $debt_history
  */
 
 use app\core\Cash;
+use app\core\debt\DebtHistory;
 use app\core\Plastic;
 use app\core\selling\ByCategory;
 use app\core\selling\Selling;
@@ -57,7 +59,7 @@ use app\core\View;
                 </div>
                 <div class="mb-md-3">
                     <h3 class="card-title">Qarzdorliklar</h3>
-                    <?= View::staticRender('debt_history') ?>
+                    <?= View::staticRender('debt_history', compact('debt_history')) ?>
                 </div>
                 <div class="mt-3">
                     <h3 class="card-title">Barcha sotish qaydlari</h3>

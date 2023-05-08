@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\core\Application;
 use app\core\Cash;
 use app\core\Controller;
+use app\core\debt\DebtHistory;
 use app\core\Money;
 use app\core\Plastic;
 use app\core\selling\ByCategory;
@@ -18,7 +19,8 @@ class SiteController extends Controller
         $plastic = new Plastic();
         $selling = new Selling();
         $caty = new ByCategory();
-        return $this->render('index', compact('cash', 'plastic', 'selling', 'caty'));
+        $debt_history = new DebtHistory();
+        return $this->render('index', compact('cash', 'plastic', 'selling', 'caty', 'debt_history'));
     }
 
     public function sorting(): bool|array|string
@@ -28,8 +30,9 @@ class SiteController extends Controller
         $plastic = new Plastic();
         $selling = new Selling();
         $caty = new ByCategory();
+        $debt_history = new DebtHistory();
         $this->setInterval($sorting_dates);
-        return $this->render('index', compact('sorting_dates', 'cash', 'plastic', 'selling', 'caty'));
+        return $this->render('index', compact('sorting_dates', 'cash', 'plastic', 'selling', 'caty', 'debt_history'));
     }
 
     public function setInterval(array $sorting_dates): void

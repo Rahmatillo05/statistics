@@ -2,13 +2,15 @@
 
 use app\core\tools\Formatter;
 
-$debt_history = new \app\core\debt\DebtHistory();
+/**
+ * @var \app\core\debt\DebtHistory $debt_history
+ */
 
 $debts = $debt_history->dailyDebt();
 
 ?>
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="debt_history">
         <thead>
             <tr>
                 <th>Qarzdor</th>
