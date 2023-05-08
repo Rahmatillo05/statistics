@@ -57,8 +57,8 @@ class SiteController extends Controller
     public function history(): bool|array|string
     {
         $id = Application::$app->request->get('id');
-
-        return $this->render('history', compact('id'));
+        $histories = (new DebtHistory())->findOne(['history_id' => $id]);
+        return $this->render('history', compact('histories'));
     }
 
 
