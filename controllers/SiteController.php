@@ -54,4 +54,12 @@ class SiteController extends Controller
         new Selling($start, $end);
     }
 
+    public function history(): bool|array|string
+    {
+        $id = Application::$app->request->get('id');
+
+        return $this->render('history');
+    }
+
+
 }
