@@ -58,7 +58,7 @@ class SiteController extends Controller
     {
         $id = Application::$app->request->get('id');
 
-        return $this->render('history');
+        return $this->render('history', compact('id'));
     }
 
 

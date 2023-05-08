@@ -3,6 +3,9 @@
 use app\core\selling\ByCategory;
 use app\core\tools\Formatter;
 
+/**
+ * @var ByCategory $caty
+ */
 
 $sales = $caty->dailySalesByCategory();
 
@@ -18,7 +21,7 @@ $sales = $caty->dailySalesByCategory();
             <th>Diagramma</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
         <?php if ($sales) : foreach ($sales as $sale) : ?>
             <tr>
                 <td><?= $sale['category_name'] ?></td>

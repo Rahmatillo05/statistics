@@ -26,14 +26,14 @@ $sales = $selling->dailySales();
             <th>Sotish vaqti</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
         <?php if ($sales) : foreach ($sales as $sale) : ?>
             <tr>
                 <td><?= $sale['category_name'] ?></td>
                 <td><?= $sale['product_name'] ?></td>
                 <td><?= $sale['sell_amount'] ?></td>
                 <td><?= Formatter::priceFormatter($sale['sell_price']) ?></td>
-                <td><?= $selling->setTypePayBadge($sale['sell_amount']) ?></td>
+                <td><?= $selling->setTypePayBadge($sale['type_pay']) ?></td>
                 <td><?= $sale['worker'] ?></td>
                 <td><?= Formatter::dateParser($sale['created_at']) ?></td>
             </tr>
