@@ -18,11 +18,16 @@ class Selling
 
     const MIX_TYPE = 15; # Aralash holatda
 
-    public function __construct()
+    public function __construct(int $START_DAY = null, int $END_DAY = null)
     {
+        if (is_null($START_DAY) || is_null($END_DAY)) {
+            self::$START_DAY = strtotime('today');
+            self::$END_DAY = self::$START_DAY + 86395;
+        } else {
+            self::$START_DAY = $START_DAY;
+            self::$END_DAY = $END_DAY;
+        }
         self::$db = new DB();
-        self::$START_DAY = strtotime('today');
-        self::$END_DAY = static::$START_DAY + 86399;
     }
 
     public function dailySales(): ?array
@@ -78,16 +83,6 @@ class Selling
         }
         $badge .= "</span>";
         return $badge;
-    }
-
-    public function dateParser(int $created_at): string
-    {
-        return date('H:i d.m.Y', $created_at);
-    }
-
-    public function priceFormatter(int $sell_price): string
-    {
-        return number_format($sell_price, 0, '.', ' '). ' So\'m';
     }
 
 }

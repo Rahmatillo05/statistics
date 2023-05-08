@@ -6,20 +6,30 @@ use app\core\Application;
 use app\core\Cash;
 use app\core\Controller;
 use app\core\Money;
+use app\core\Plastic;
+use app\core\selling\ByCategory;
 use app\core\selling\Selling;
 
 class SiteController extends Controller
 {
     public function index(): bool|array|string
     {
-        return $this->render('index');
+        $cash = new Cash();
+        $plastic = new Plastic();
+        $selling = new Selling();
+        $caty = new ByCategory();
+        return $this->render('index', compact('cash', 'plastic', 'selling', 'caty'));
     }
 
     public function sorting(): bool|array|string
     {
         $sorting_dates = Application::$app->request->get('Sorting');
+        $cash = new Cash();
+        $plastic = new Plastic();
+        $selling = new Selling();
+        $caty = new ByCategory();
         $this->setInterval($sorting_dates);
-        return $this->render('index', compact('sorting_dates'));
+        return $this->render('index', compact('sorting_dates', 'cash', 'plastic', 'selling', 'caty'));
     }
 
     public function setInterval(array $sorting_dates): void
@@ -38,6 +48,7 @@ class SiteController extends Controller
             $end = $start + 86399;
         }
         new Money($start, $end);
+        new Selling($start, $end);
     }
 
 }

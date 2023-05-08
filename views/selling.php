@@ -1,6 +1,7 @@
 <?php
 
 use app\core\selling\Selling;
+use app\core\tools\Formatter;
 
 /**
  * @var Selling $selling
@@ -31,10 +32,10 @@ $sales = $selling->dailySales();
                 <td><?= $sale['category_name'] ?></td>
                 <td><?= $sale['product_name'] ?></td>
                 <td><?= $sale['sell_amount'] ?></td>
-                <td><?= $selling->priceFormatter($sale['sell_price']) ?></td>
+                <td><?= Formatter::priceFormatter($sale['sell_price']) ?></td>
                 <td><?= $selling->setTypePayBadge($sale['sell_amount']) ?></td>
                 <td><?= $sale['worker'] ?></td>
-                <td><?= $selling->dateParser($sale['created_at']) ?></td>
+                <td><?= Formatter::dateParser($sale['created_at']) ?></td>
             </tr>
         <?php endforeach; else: ?>
             <tr>

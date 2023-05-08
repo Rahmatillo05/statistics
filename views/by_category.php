@@ -1,8 +1,9 @@
 <?php
 
 use app\core\selling\ByCategory;
+use app\core\tools\Formatter;
 
-$caty = new ByCategory();
+
 $sales = $caty->dailySalesByCategory();
 
 ?>
@@ -22,11 +23,12 @@ $sales = $caty->dailySalesByCategory();
             <tr>
                 <td><?= $sale['category_name'] ?></td>
                 <td><?= $caty::setAmountUnit($sale['amount'], $sale['unit']) ?></td>
-                <td><?= $caty->priceFormatter($sale['price']) ?></td>
+                <td><?= Formatter::priceFormatter($sale['price']) ?></td>
                 <td>
                     <div class="progress" role="progressbar" aria-valuenow="<?= $sale['price'] ?>"
                          aria-valuemin="0" aria-valuemax="<?= $caty->fetchMax() ?>">
-                        <div class="progress-bar overflow-visible" style="width: <?= $caty->calcPercent($sale['price']) ?>%"><?= $caty->priceFormatter($sale['price']) ?></div>
+                        <div class="progress-bar overflow-visible"
+                             style="width: <?= $caty->calcPercent($sale['price']) ?>%"><?= Formatter::priceFormatter($sale['price']) ?></div>
                     </div>
                 </td>
             </tr>

@@ -2,12 +2,17 @@
 
 /**
  * @var array $sorting_dates
+ * @var Cash $cash
+ * @var Plastic $plastic
+ * @var Selling $selling
+ * @var ByCategory $caty
  */
 
+use app\core\Cash;
+use app\core\Plastic;
+use app\core\selling\ByCategory;
 use app\core\selling\Selling;
 use app\core\View;
-
-$selling = new Selling();
 
 ?>
 
@@ -37,7 +42,7 @@ $selling = new Selling();
                 </div>
             </div>
             <div class="card-body">
-                <?= View::staticRender('table_stat') ?>
+                <?= View::staticRender('table_stat', compact('cash', 'plastic')) ?>
             </div>
         </div>
         <div class="card mt-sm-3">
@@ -48,7 +53,7 @@ $selling = new Selling();
             <div class="card-body">
                 <div class="mb-md-3">
                     <h3 class="card-title">Kataloglar bo'yicha</h3>
-                    <?= View::staticRender('by_category') ?>
+                    <?= View::staticRender('by_category', compact('caty')) ?>
                 </div>
                 <div class="">
                     <h3 class="card-title">Barcha sotish qaydlari</h3>
