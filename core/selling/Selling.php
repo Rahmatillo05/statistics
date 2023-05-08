@@ -40,6 +40,7 @@ class Selling
         $columns = [
             "selling.id(selling_id)",
             "category.id(category_id)",
+            "category.unit",
             "product.id(product_id)",
             "user.id(user_id)",
             "category.category_name",

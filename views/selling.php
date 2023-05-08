@@ -7,8 +7,6 @@ use app\core\tools\Formatter;
  * @var Selling $selling
  */
 
-$selling->dailySellingCount();
-$selling->dailySalesAmount();
 
 $sales = $selling->dailySales();
 ?>
@@ -31,7 +29,7 @@ $sales = $selling->dailySales();
             <tr>
                 <td><?= $sale['category_name'] ?></td>
                 <td><?= $sale['product_name'] ?></td>
-                <td><?= $sale['sell_amount'] ?></td>
+                <td><?= Formatter::setAmountUnit($sale['sell_amount'], $sale['unit']) ?></td>
                 <td><?= Formatter::priceFormatter($sale['sell_price']) ?></td>
                 <td><?= $selling->setTypePayBadge($sale['type_pay']) ?></td>
                 <td><?= $sale['worker'] ?></td>
