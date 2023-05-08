@@ -26,7 +26,9 @@ use app\core\Application;
         crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('#selling-table').DataTable();
+        $('#selling-table').DataTable({
+            order: [[ 6, 'desc' ]]
+        });
     });
 </script>
 </body>

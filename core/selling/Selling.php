@@ -52,7 +52,7 @@ class Selling
         ];
         return self::$db->database->select('selling', $relations, $columns,
             [
-                'selling.created_at[<>]' => [self::$START_DAY, self::$END_DAY]
+                'selling.created_at[<>]' => [self::$START_DAY, self::$END_DAY],
             ]
         );
     }

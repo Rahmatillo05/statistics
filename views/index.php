@@ -55,7 +55,11 @@ use app\core\View;
                     <h3 class="card-title">Kataloglar bo'yicha</h3>
                     <?= View::staticRender('by_category', compact('caty')) ?>
                 </div>
-                <div class="">
+                <div class="mb-md-3">
+                    <h3 class="card-title">Qarzdorliklar</h3>
+                    <?= View::staticRender('debt_history') ?>
+                </div>
+                <div class="mt-3">
                     <h3 class="card-title">Barcha sotish qaydlari</h3>
                     <?= View::staticRender('selling', compact('selling')) ?>
                 </div>
