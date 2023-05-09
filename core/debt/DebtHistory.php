@@ -16,6 +16,7 @@ class DebtHistory extends Selling
         $columns = [
             "debt_history.id",
             "debtor.full_name(debtor_name)",
+            "debtor.id(debtor_id)",
             "user.username(worker)",
             "debt_history.debt_amount",
             "debt_history.pay_amount(instant_paid)",
