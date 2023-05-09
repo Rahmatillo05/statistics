@@ -1,12 +1,12 @@
 <?php
 
-use app\core\Cash;
-use app\core\Plastic;
+use app\core\money\Cash;
+use app\core\money\Plastic;
 use app\core\tools\Formatter;
 
 /**
- * @var Cash $cash
- * @var Plastic $plastic
+ * @var \app\core\money\Cash $cash
+ * @var \app\core\money\Plastic $plastic
  */
 
 ?>

@@ -2,16 +2,16 @@
 
 /**
  * @var array $sorting_dates
- * @var Cash $cash
- * @var Plastic $plastic
+ * @var \app\core\money\Cash $cash
+ * @var \app\core\money\Plastic $plastic
  * @var Selling $selling
  * @var ByCategory $caty
  * @var DebtHistory $debt_history
  */
 
-use app\core\Cash;
 use app\core\debt\DebtHistory;
-use app\core\Plastic;
+use app\core\money\Cash;
+use app\core\money\Plastic;
 use app\core\selling\ByCategory;
 use app\core\selling\Selling;
 use app\core\View;

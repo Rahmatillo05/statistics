@@ -1,8 +1,8 @@
 <?php
 
-namespace app\core;
+namespace app\core\money;
 
-class Plastic extends Money
+class Cash extends Money
 {
     public function allSelling(): int
     {
@@ -11,9 +11,10 @@ class Plastic extends Money
             ->sum('selling',
                 'sell_price',
                 [
-                    'type_pay' => self::PLASTIC
+                    'type_pay' => self::CASH
                 ]);
     }
+
     public function dailySelling(): int
     {
         return (int)self::$db
@@ -21,7 +22,7 @@ class Plastic extends Money
             ->sum('selling',
                 'sell_price',
                 [
-                    'type_pay' => self::PLASTIC,
+                    'type_pay' => self::CASH,
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY]
                 ]);
     }
@@ -45,7 +46,7 @@ class Plastic extends Money
                 'pay_amount',
                 [
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY],
-                    'type_pay' => self::PLASTIC
+                    'type_pay' => self::CASH
                 ]);
     }
 
@@ -57,7 +58,7 @@ class Plastic extends Money
                 'pay_amount',
                 [
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY],
-                    'type_pay' => self::PLASTIC
+                    'type_pay' => self::CASH
                 ]);
     }
 

@@ -3,11 +3,11 @@
 namespace app\controllers;
 
 use app\core\Application;
-use app\core\Cash;
 use app\core\Controller;
 use app\core\debt\DebtHistory;
-use app\core\Money;
-use app\core\Plastic;
+use app\core\money\Cash;
+use app\core\money\Money;
+use app\core\money\Plastic;
 use app\core\selling\ByCategory;
 use app\core\selling\Selling;
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace app\core;
+namespace app\core\money;
+
+use app\core\DB;
 
 class Money
 {
