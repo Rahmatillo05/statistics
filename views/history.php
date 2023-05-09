@@ -1,15 +1,17 @@
 <?php
 
 /**
- * @var DebtHistory $histories
+ * @var DebtHistory[] $histories
  */
 
 use app\core\debt\DebtHistory;
 use app\core\tools\Formatter;
 
-$debtor_stat = DebtHistory::debtorStat($histories[0]['debtor_id']);
+$id = $histories[0]['debtor_id'];
+$debtor_stat = DebtHistory::debtorStat($id);
+$payment_histories = (new DebtHistory())->fetchPaymentHistory($id);
+$all_paid = DebtHistory::paymentAmount($id);
 ?>
-
 <div class="row mt-3">
     <div class="col-md-10 offset-md-1">
         <div class="card">
@@ -85,6 +87,34 @@ $debtor_stat = DebtHistory::debtorStat($histories[0]['debtor_id']);
                                 </div>
                             </td>
                         </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="card-title">To'lovlar tarixi</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Umumiy to'langan summa: <i><?= Formatter::priceFormatter($all_paid) ?></i></h4>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">To'lov Summasi</th>
+                            <th scope="col">To'lov turi</th>
+                            <th scope="col">To'lov vaqti</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($payment_histories as $history) : ?>
+                            <tr>
+                                <td><?= Formatter::priceFormatter($history['pay_amount']) ?></td>
+                                <td><?= Formatter::setTypePayBadge($history['type_pay'], $history['pay_amount']) ?></td>
+                                <td><?= Formatter::dateParser($history['created_at']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

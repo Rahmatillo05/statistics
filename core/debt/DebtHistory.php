@@ -70,4 +70,14 @@ class DebtHistory extends Selling
         return compact('total_debt', 'paid_debt', 'remaining');
     }
 
+    public function fetchPaymentHistory(int $debtor_id): ?array
+    {
+        return self::$db->database->select('payment_history_list', "*", ['debtor_id' => $debtor_id]);
+    }
+
+    public static function paymentAmount(int $debtor_id): float
+    {
+        return (float)self::$db->database->sum('payment_history_list', 'pay_amount', ['debtor_id' => $debtor_id]);
+    }
+
 }
