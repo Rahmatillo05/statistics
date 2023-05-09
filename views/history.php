@@ -8,8 +8,6 @@ use app\core\debt\DebtHistory;
 use app\core\tools\Formatter;
 
 $debtor_stat = DebtHistory::debtorStat($histories[0]['debtor_id']);
-$remaining = Formatter::remainingDebt($debtor_stat['total_debt'], $debtor_stat['paid']);
-echo $histories[0]['debtor_id']
 ?>
 
 <div class="row mt-3">
@@ -73,7 +71,7 @@ echo $histories[0]['debtor_id']
                                 <div class="progress" role="progressbar"
                                      aria-valuemin="0" aria-valuemax="<?= $debtor_stat['total_debt'] ?>">
                                     <div class="progress-bar overflow-visible"
-                                         style="width: <?= Formatter::calcPercent($debtor_stat['paid'], $debtor_stat['total_debt']) ?>%"><?= Formatter::priceFormatter($debtor_stat['paid']) ?></div>
+                                         style="width: <?= Formatter::calcPercent($debtor_stat['paid_debt'], $debtor_stat['total_debt']) ?>%"><?= Formatter::priceFormatter($debtor_stat['paid_debt']) ?></div>
                                 </div>
                             </td>
                         </tr>
@@ -83,7 +81,7 @@ echo $histories[0]['debtor_id']
                                 <div class="progress" role="progressbar"
                                      aria-valuemin="0" aria-valuemax="<?= $debtor_stat['total_debt'] ?>">
                                     <div class="progress-bar overflow-visible bg-danger"
-                                         style="width: <?= Formatter::calcPercent((int)$remaining, $debtor_stat['total_debt']) ?>%"><?= $remaining ?></div>
+                                         style="width: <?= Formatter::calcPercent($debtor_stat['remaining'], $debtor_stat['total_debt']) ?>%"><?= Formatter::priceFormatter($debtor_stat['remaining']) ?></div>
                                 </div>
                             </td>
                         </tr>

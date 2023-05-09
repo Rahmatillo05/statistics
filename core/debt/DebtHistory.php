@@ -56,18 +56,18 @@ class DebtHistory extends Selling
         return self::$db->database->select($table, $relations, $columns, $where);
     }
 
-    public static function debtorStat(int $debtor_id)
+    public static function debtorStat(int $debtor_id): array
     {
-        $query = "SELECT 
-                    SUM(payment_history_list.pay_amount + debt_history.pay_amount) AS paid,
-                    SUM(debt_history.debt_amount + old_debt.amount) AS total_debt
-                    FROM `debtor` 
-                    JOIN debt_history ON debtor.id = debt_history.debtor_id
-                    JOIN payment_history_list ON debtor.id = payment_history_list.debtor_id
-                    JOIN old_debt ON debtor.id = old_debt.debtor_id
-                    WHERE debtor.id=$debtor_id";
+        $old_debt = (float)self::$db->database->sum('old_debt', 'amount', ['debtor_id' => $debtor_id]);
+        $new_debt = (float)self::$db->database->sum('debt_history', 'debt_amount', ['debtor_id' => $debtor_id]);
+        $instant_paid = (float)self::$db->database->sum('debt_history', 'pay_amount', ['debtor_id' => $debtor_id]);
+        $paid  = (float)self::$db->database->sum('payment_history_list', 'pay_amount', ['debtor_id' => $debtor_id]);
 
-        return self::$db->database->query($query)->fetch(PDO::FETCH_ASSOC);
+        $total_debt = $old_debt + $new_debt;
+        $paid_debt = $paid + $instant_paid;
+        $remaining = $total_debt - $paid_debt;
+
+        return compact('total_debt', 'paid_debt', 'remaining');
     }
 
 }
