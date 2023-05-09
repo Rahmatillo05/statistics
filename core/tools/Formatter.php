@@ -34,7 +34,7 @@ class Formatter
     public static function setTypePayBadge(int $type_pay, float|int $pay_amount): string
     {
         $badge = "<span class='";
-        if ($type_pay == self::PLASTIC && $pay_amount === 0){
+        if ($pay_amount === 0){
             $badge .= "badge bg-danger'>To'lanmagan";
         }elseif ($type_pay === self::MIX_TYPE) {
             $badge .= "badge bg-info'>Aralash holatda";
