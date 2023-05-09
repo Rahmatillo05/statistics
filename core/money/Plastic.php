@@ -14,6 +14,7 @@ class Plastic extends Money
                     'type_pay' => self::PLASTIC
                 ]);
     }
+
     public function dailySelling(): int
     {
         return (int)self::$db
@@ -64,5 +65,12 @@ class Plastic extends Money
     public function dailyTotalCash(): int
     {
         return $this->dailyInstantPayment() + $this->dailySelling() + $this->dailyMixSelling() + $this->dailyPaidDebt();
+    }
+
+    public function taxAmount(): float
+    {
+        $tax_amount = (float)self::$db->database->select('plastic_card_tax', 'tax_amount', ['id' => 1])[0];
+
+        return $tax_amount / 100 * $this->dailyTotalCash();
     }
 }

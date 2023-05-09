@@ -8,31 +8,33 @@ use app\core\tools\Formatter;
  * @var \app\core\money\Cash $cash
  * @var \app\core\money\Plastic $plastic
  * @var \app\core\money\Debt $debt
+ * @var \app\core\money\Statistics $statistics
  */
 $daily_debt = $debt->dailyNewDebt();
 $paid = $debt->paymentHistory();
+
 ?>
-
-
 <div class="table-responsive mb-5">
     <table class="table">
         <tr class="text-center">
-            <th colspan="6"><h5>Umumiy kirim-chiqim</h5></th>
+            <th colspan="6"><h5>Umumiy statistika</h5></th>
         </tr>
         <tbody class="table-group-divider">
         <tr>
-            <th>Kelgan summa</th>
-            <th>Sotilgan mahsulotlarga ketgan summa </th>
-            <th>Boshqa harajatlar</th>
-            <th>Plastik solig'i</th>
-            <td>Sof foyda</td>
+            <th class="table-info">Kelgan summa</th>
+            <th class="table-warning">Sotilgan mahsulotlarga ketgan summa</th>
+            <th class="table-primary">Foyda</th>
+            <th class="table-danger">Boshqa harajatlar</th>
+            <th class="table-danger">Plastik solig'i</th>
+            <td class="table-success">Sof foyda</td>
         </tr>
         <tr>
-            <td><?= Formatter::priceFormatter($cash->dailySelling()) ?></td>
-            <td><?= Formatter::priceFormatter($cash->dailyMixSelling()) ?></td>
-            <td><?= Formatter::priceFormatter($cash->dailyPaidDebt()) ?></td>
-            <td><?= Formatter::priceFormatter($cash->dailyInstantPayment()) ?></td>
-            <td colspan="2"><?= Formatter::priceFormatter($cash->dailyTotalCash()) ?></td>
+            <td class="table-info"><?= Formatter::priceFormatter($statistics->allSum()) ?></td>
+            <td class="table-warning"><?= Formatter::priceFormatter($statistics->productSum()) ?></td>
+            <td class="table-primary"><?= Formatter::priceFormatter($statistics->profit()) ?></td>
+            <td class="table-danger"><?= Formatter::priceFormatter($statistics->otherSpent()) ?></td>
+            <td class="table-danger"><?= Formatter::priceFormatter($plastic->taxAmount()) ?></td>
+            <td class="table-success"><?= Formatter::priceFormatter($statistics->netProfit($plastic->taxAmount())) ?></td>
         </tr>
         </tbody>
 
@@ -68,22 +70,22 @@ $paid = $debt->paymentHistory();
         <tr class="text-center">
             <th colspan="6"><h5>Plastikka</h5></th>
         </tr>
-       <tbody class="table-group-divider">
-       <tr>
-           <th>Sotishdan</th>
-           <th>Aralash sotish</th>
-           <th>Qarzni to'lash</th>
-           <th>Qarzga sotilgandagi to'lov</th>
-           <th colspan="2"><h6>Umumiy</h6></th>
-       </tr>
-       <tr>
-           <td><?= Formatter::priceFormatter($plastic->dailySelling()) ?></td>
-           <td><?= Formatter::priceFormatter($plastic->dailyMixSelling()) ?></td>
-           <td><?= Formatter::priceFormatter($plastic->dailyPaidDebt()) ?></td>
-           <td><?= Formatter::priceFormatter($plastic->dailyInstantPayment()) ?></td>
-           <td colspan="2"><?= Formatter::priceFormatter($plastic->dailyTotalCash()) ?></td>
-       </tr>
-       </tbody>
+        <tbody class="table-group-divider">
+        <tr>
+            <th>Sotishdan</th>
+            <th>Aralash sotish</th>
+            <th>Qarzni to'lash</th>
+            <th>Qarzga sotilgandagi to'lov</th>
+            <th colspan="2"><h6>Umumiy</h6></th>
+        </tr>
+        <tr>
+            <td><?= Formatter::priceFormatter($plastic->dailySelling()) ?></td>
+            <td><?= Formatter::priceFormatter($plastic->dailyMixSelling()) ?></td>
+            <td><?= Formatter::priceFormatter($plastic->dailyPaidDebt()) ?></td>
+            <td><?= Formatter::priceFormatter($plastic->dailyInstantPayment()) ?></td>
+            <td colspan="2"><?= Formatter::priceFormatter($plastic->dailyTotalCash()) ?></td>
+        </tr>
+        </tbody>
     </table>
 </div>
 <div class="table-responsive">

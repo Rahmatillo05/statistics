@@ -9,6 +9,7 @@ use app\core\money\Cash;
 use app\core\money\Debt;
 use app\core\money\Money;
 use app\core\money\Plastic;
+use app\core\money\Statistics;
 use app\core\selling\ByCategory;
 use app\core\selling\Selling;
 
@@ -22,7 +23,8 @@ class SiteController extends Controller
         $caty = new ByCategory();
         $debt_history = new DebtHistory();
         $debt = new Debt();
-        return $this->render('index', compact('cash', 'plastic', 'debt', 'selling', 'caty', 'debt_history'));
+        $statistics = new Statistics();
+        return $this->render('index', compact('cash', 'plastic', 'statistics', 'debt', 'selling', 'caty', 'debt_history'));
     }
 
     public function sorting(): bool|array|string
@@ -34,8 +36,9 @@ class SiteController extends Controller
         $caty = new ByCategory();
         $debt_history = new DebtHistory();
         $debt = new Debt();
+        $statistics = new Statistics();
         $this->setInterval($sorting_dates);
-        return $this->render('index', compact('sorting_dates', 'cash', 'debt', 'plastic', 'selling', 'caty', 'debt_history'));
+        return $this->render('index', compact('sorting_dates', 'statistics', 'cash', 'debt', 'plastic', 'selling', 'caty', 'debt_history'));
     }
 
     public function setInterval(array $sorting_dates): void

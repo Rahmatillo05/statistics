@@ -39,7 +39,6 @@ class Debt extends Money
                 ]
             );
     }
-
     public function dailyDebt(): array
     {
         $old_debt = (int)self::$db
