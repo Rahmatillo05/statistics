@@ -40,6 +40,7 @@ class DebtHistory extends Selling
             "[>]debtor" => ["debt_history.debtor_id" => "id"]
         ];
         $columns = [
+            'debt_history.id',
             'product.product_name',
             'category.category_name',
             'category.unit',

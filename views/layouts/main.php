@@ -32,6 +32,8 @@ use app\core\Application;
         $('#debt_history').DataTable({
            order: [[5, 'desc']]
         });
+        $('#history').DataTable();
+        $('#paid_history').DataTable();
     });
 </script>
 </body>

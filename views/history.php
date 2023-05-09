@@ -4,6 +4,7 @@
  * @var DebtHistory[] $histories
  */
 
+use app\core\Application;
 use app\core\debt\DebtHistory;
 use app\core\tools\Formatter;
 
@@ -11,6 +12,7 @@ $id = $histories[0]['debtor_id'];
 $debtor_stat = DebtHistory::debtorStat($id);
 $payment_histories = (new DebtHistory())->fetchPaymentHistory($id);
 $all_paid = DebtHistory::paymentAmount($id);
+$history_id = Application::$app->request->get('history_id');
 ?>
 <div class="row mt-3">
     <div class="col-md-10 offset-md-1">
@@ -20,7 +22,7 @@ $all_paid = DebtHistory::paymentAmount($id);
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="history">
                         <thead class="table-light">
                         <tr>
                             <th>Mahsulot nomi</th>
@@ -35,7 +37,7 @@ $all_paid = DebtHistory::paymentAmount($id);
                         </thead>
                         <tbody class="table-group-divider">
                         <?php foreach ($histories as $history) : ?>
-                            <tr>
+                            <tr class="<?= $history_id == $history['id'] ? 'table-primary' : '' ?>">
                                 <td><?= $history['product_name'] ?></td>
                                 <td><?= Formatter::setAmountUnit($history['sell_amount'], $history['unit']) ?></td>
                                 <td><?= Formatter::priceFormatter($history['sell_price']) ?></td>
@@ -98,7 +100,7 @@ $all_paid = DebtHistory::paymentAmount($id);
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="paid_history">
                         <thead>
                         <tr>
                             <th scope="col">To'lov Summasi</th>

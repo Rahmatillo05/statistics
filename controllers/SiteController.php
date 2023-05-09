@@ -6,6 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\debt\DebtHistory;
 use app\core\money\Cash;
+use app\core\money\Debt;
 use app\core\money\Money;
 use app\core\money\Plastic;
 use app\core\selling\ByCategory;
@@ -20,7 +21,8 @@ class SiteController extends Controller
         $selling = new Selling();
         $caty = new ByCategory();
         $debt_history = new DebtHistory();
-        return $this->render('index', compact('cash', 'plastic', 'selling', 'caty', 'debt_history'));
+        $debt = new Debt();
+        return $this->render('index', compact('cash', 'plastic', 'debt', 'selling', 'caty', 'debt_history'));
     }
 
     public function sorting(): bool|array|string
@@ -31,8 +33,9 @@ class SiteController extends Controller
         $selling = new Selling();
         $caty = new ByCategory();
         $debt_history = new DebtHistory();
+        $debt = new Debt();
         $this->setInterval($sorting_dates);
-        return $this->render('index', compact('sorting_dates', 'cash', 'plastic', 'selling', 'caty', 'debt_history'));
+        return $this->render('index', compact('sorting_dates', 'cash', 'debt', 'plastic', 'selling', 'caty', 'debt_history'));
     }
 
     public function setInterval(array $sorting_dates): void
@@ -57,7 +60,7 @@ class SiteController extends Controller
     public function history(): bool|array|string
     {
         $id = Application::$app->request->get('id');
-        $histories = (new DebtHistory())->findOne(['debtor.id' => $id]);
+        $histories = (new DebtHistory())->findOne(['debtor.id' => $id, 'ORDER' => ['debt_history.created_at' => 'DESC']]);
         if ($histories) {
             return $this->render('history', compact('histories'));
         } else {

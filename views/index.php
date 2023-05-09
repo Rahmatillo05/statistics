@@ -7,6 +7,7 @@
  * @var Selling $selling
  * @var ByCategory $caty
  * @var DebtHistory $debt_history
+ * @var \app\core\money\Debt $debt
  */
 
 use app\core\debt\DebtHistory;
@@ -44,7 +45,7 @@ use app\core\View;
                 </div>
             </div>
             <div class="card-body">
-                <?= View::staticRender('table_stat', compact('cash', 'plastic')) ?>
+                <?= View::staticRender('table_stat', compact('cash', 'plastic', 'debt')) ?>
             </div>
         </div>
         <div class="card mt-sm-3">
