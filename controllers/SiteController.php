@@ -58,7 +58,11 @@ class SiteController extends Controller
     {
         $id = Application::$app->request->get('id');
         $histories = (new DebtHistory())->findOne(['history_id' => $id]);
-        return $this->render('history', compact('histories'));
+        if ($histories) {
+            return $this->render('history', compact('histories'));
+        } else {
+            return $this->render('error');
+        }
     }
 
 

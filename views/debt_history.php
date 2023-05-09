@@ -28,7 +28,7 @@ $debts = $debt_history->dailyDebt();
                 <td><?= $debt['debtor_name'] ?></td>
                 <td><?= Formatter::priceFormatter($debt['debt_amount']) ?></td>
                 <td><?= Formatter::priceFormatter($debt['instant_paid']) ?></td>
-                <td><?= $debt_history->setTypePayBadge($debt['type_pay']) ?></td>
+                <td><?= Formatter::setTypePayBadge($debt['type_pay'], $debt['instant_paid']) ?></td>
                 <td><?= $debt['worker'] ?></td>
                 <td><?= Formatter::dateParser($debt['created_at']) ?></td>
                 <td><a href="/history?id=<?= $debt['id'] ?>" class="btn btn-sm btn-info">Batafsil</a></td>

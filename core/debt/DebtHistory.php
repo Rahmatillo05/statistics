@@ -3,6 +3,7 @@
 namespace app\core\debt;
 
 use app\core\selling\Selling;
+use PDO;
 
 class DebtHistory extends Selling
 {
@@ -53,6 +54,20 @@ class DebtHistory extends Selling
         ];
 
         return self::$db->database->select($table, $relations, $columns, $where);
+    }
+
+    public static function debtorStat(int $debtor_id)
+    {
+        $query = "SELECT 
+                    SUM(payment_history_list.pay_amount + debt_history.pay_amount) AS paid,
+                    SUM(debt_history.debt_amount + old_debt.amount) AS total_debt
+                    FROM `debtor` 
+                    JOIN debt_history ON debtor.id = debt_history.debtor_id
+                    JOIN payment_history_list ON debtor.id = payment_history_list.debtor_id
+                    JOIN old_debt ON debtor.id = old_debt.debtor_id
+                    WHERE debtor.id=$debtor_id";
+
+        return self::$db->database->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 
 }
