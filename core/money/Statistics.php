@@ -48,4 +48,13 @@ class Statistics extends Money
     {
         return $this->profit() - $plastic_tax - $this->otherSpent();
     }
+
+    public function noPaidDebt()
+    {
+        $query = "SELECT 
+                    SUM(debt_history.debt_amount - debt_history.pay_amount) as debt
+                    FROM debt_history WHERE 
+                                            created_at BETWEEN ". self::$START_DAY ." AND ".self::$END_DAY;
+        return (int)self::$db->database->query($query)->fetch(PDO::FETCH_ASSOC)['debt'];
+    }
 }

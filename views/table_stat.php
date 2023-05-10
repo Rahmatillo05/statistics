@@ -26,6 +26,7 @@ $paid = $debt->paymentHistory();
             <th class="table-primary">Foyda</th>
             <th class="table-danger">Boshqa harajatlar</th>
             <th class="table-danger">Plastik solig'i</th>
+            <th class="table-danger">To'lanmagan qarzlar</th>
             <td class="table-success">Sof foyda</td>
         </tr>
         <tr>
@@ -34,6 +35,7 @@ $paid = $debt->paymentHistory();
             <td class="table-primary"><?= Formatter::priceFormatter($statistics->profit()) ?></td>
             <td class="table-danger"><?= Formatter::priceFormatter($statistics->otherSpent()) ?></td>
             <td class="table-danger"><?= Formatter::priceFormatter($plastic->taxAmount()) ?></td>
+            <td class="table-danger"><?= Formatter::priceFormatter($statistics->noPaidDebt()) ?></td>
             <td class="table-success"><?= Formatter::priceFormatter($statistics->netProfit($plastic->taxAmount())) ?></td>
         </tr>
         </tbody>
