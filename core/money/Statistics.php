@@ -46,10 +46,10 @@ class Statistics extends Money
 
     public function netProfit($plastic_tax)
     {
-        return $this->profit() - $plastic_tax - $this->otherSpent();
+        return $this->profit() - $plastic_tax - $this->otherSpent() - $this->noPaidDebt();
     }
 
-    public function noPaidDebt()
+    public function noPaidDebt(): int
     {
         $query = "SELECT 
                     SUM(debt_history.debt_amount - debt_history.pay_amount) as debt
