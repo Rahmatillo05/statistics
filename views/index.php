@@ -19,7 +19,6 @@ use app\core\selling\Selling;
 use app\core\View;
 
 ?>
-
 <div class="row mt-5">
     <div class="col-12">
         <div class="card">
@@ -28,6 +27,11 @@ use app\core\View;
                     <div class="div">
                         <h3 class="card-title">Umumiy holat</h3>
                         <span class="text-mute">Odatiy holatda bugungi kundagi ma'lumotlar aks etadi</span>
+                    </div>
+                    <div class="">
+                        <a href="<?= ($_SERVER['REQUEST_URI'] != '/') ? '/' : $_SERVER['REQUEST_URI'] ?>" class="btn btn-primary">
+                            <?= $_SERVER['REQUEST_URI'] == '/' ? "Ma'lumotlarni yangilash" : 'Asliga qaytish' ?>
+                        </a>
                     </div>
                     <form action="/sorting">
                         <h4>Sana bo'yicha ko'rish:</h4>
