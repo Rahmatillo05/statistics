@@ -21,8 +21,9 @@ $paid = $debt->paymentHistory();
         </tr>
         <tbody class="table-group-divider">
         <tr>
-            <th class="table-info">Kelgan summa</th>
-            <th class="table-warning">Sotilgan mahsulotlarga ketgan summa</th>
+            <th class="table-info">Mahsulot sotishdan</th>
+            <th class="table-info">Qarzlarni to'lashdan</th>
+            <th class="table-warning">Mahsulotlarga ketgan summa</th>
             <th class="table-primary">Foyda</th>
             <th class="table-danger">Boshqa harajatlar</th>
             <th class="table-danger">Plastik solig'i</th>
@@ -31,6 +32,7 @@ $paid = $debt->paymentHistory();
         </tr>
         <tr>
             <td class="table-info"><?= Formatter::priceFormatter($statistics->allSum()) ?></td>
+            <td class="table-secondary"><?= Formatter::priceFormatter($statistics->paid()) ?></td>
             <td class="table-warning"><?= Formatter::priceFormatter($statistics->productSum()) ?></td>
             <td class="table-primary"><?= Formatter::priceFormatter($statistics->profit()) ?></td>
             <td class="table-danger"><?= Formatter::priceFormatter($statistics->otherSpent()) ?></td>

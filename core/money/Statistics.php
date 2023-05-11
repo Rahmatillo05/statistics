@@ -11,15 +11,20 @@ class Statistics extends Money
         $selling = (int)self::$db->database->sum('selling', 'sell_price', [
             'created_at[<>]' => [self::$START_DAY, self::$END_DAY]
         ]);
-        $paid = (int)self::$db
+
+        return $selling;
+    }
+
+    public function paid(): int
+    {
+        return (int)self::$db
             ->database
             ->sum('payment_history_list',
                 'pay_amount',
                 [
                     'created_at[<>]' => [self::$START_DAY, self::$END_DAY]
                 ]
-            );;
-        return $selling + $paid;
+            );
     }
 
     public function otherSpent(): int
@@ -39,7 +44,7 @@ class Statistics extends Money
         return (int)self::$db->database->query($query)->fetch(PDO::FETCH_ASSOC)['product_price'];
     }
 
-    public function profit()
+    public function profit(): int
     {
         return $this->allSum() - $this->productSum();
     }
