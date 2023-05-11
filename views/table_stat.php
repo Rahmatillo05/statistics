@@ -17,7 +17,7 @@ $paid = $debt->paymentHistory();
 <div class="table-responsive mb-5">
     <table class="table">
         <tr class="text-center">
-            <th colspan="6"><h5>Umumiy statistika</h5></th>
+            <th colspan="8"><h5>Umumiy statistika</h5></th>
         </tr>
         <tbody class="table-group-divider">
         <tr>
