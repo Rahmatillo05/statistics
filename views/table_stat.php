@@ -22,7 +22,7 @@ $paid = $debt->paymentHistory();
         <tbody class="table-group-divider">
         <tr>
             <th class="table-info">Mahsulot sotishdan</th>
-            <th class="table-info">Qarzlarni to'lashdan</th>
+            <th class="table-secondary">Qarzlarni to'lashdan</th>
             <th class="table-warning">Mahsulotlarga ketgan summa</th>
             <th class="table-primary">Foyda</th>
             <th class="table-danger">Boshqa harajatlar</th>
